@@ -2053,6 +2053,9 @@ int pmem_cache_maint(struct file *file, unsigned int cmd,
 	if (!file)
 		return -EBADF;
 
+        if (!pmem_addr->vaddr)
+          return -EINVAL;
+
 	data = file->private_data;
 	id = get_id(file);
 
